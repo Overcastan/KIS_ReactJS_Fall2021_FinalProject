@@ -3,6 +3,7 @@ import {Link, Route, Switch, withRouter} from "react-router-dom";
 import {MainPage} from "./Components/MainPage";
 import {AboutPage} from "./Components/AboutPage";
 import React from "react";
+import {Page404} from "./Components/Page404";
 
 const {Header, Content, Footer} = Layout;
 
@@ -15,14 +16,6 @@ class App extends React.Component{
             selectedKey = ['1'];
         } else if (path === '/about') {
             selectedKey = ['2'];
-        } else {
-            return (
-                <div>
-                    <img src="https://cs4.pikabu.ru/post_img/big/2014/09/28/9/1411910112_331235357.png"
-                         alt="404 Page not found"/>
-                </div>
-            );
-
         }
 
         return (
@@ -46,6 +39,9 @@ class App extends React.Component{
                             </Route>
                             <Route path='/about'>
                                 <AboutPage/>
+                            </Route>
+                            <Route path='/'>
+                                <Page404/>
                             </Route>
                         </Switch>
                     </div>
