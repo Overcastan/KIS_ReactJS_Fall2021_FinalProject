@@ -66,13 +66,16 @@ function currentTime() {
     let currentMoment = moment();
     if (currentMoment.hour() === 23 && moment().minute() >= 30) {
         let futureDay = moment().add(1, 'day')
-        return moment([futureDay.year(), futureDay.month(), futureDay.day(), '00', '00']);
+        return moment( futureDay.year() + "-" + futureDay.add(1, 'm').month() + "-" + futureDay.date() + " 00:00", "YYYY-MM-DD HH:mm")
+        // return moment([futureDay.year(), futureDay.month(), futureDay.day(), '00', '00'], "YYYY-MM-DD HH:mm");
     } else {
         if (moment().minute() >= 30) {
             let nextHour = moment().add(1, 'hour');
-            return moment([nextHour.year(), nextHour.month(), nextHour.day(), nextHour.hour(), '00']);
+            return moment( nextHour.year() + "-" + nextHour.add(1, 'm').month() + "-" + nextHour.date() +  " " + nextHour.hour() + ":00", "YYYY-MM-DD HH:mm")
+            // return moment([nextHour.year(), nextHour.month(), nextHour.day(), nextHour.hour(), '00'], "YYYY-MM-DD HH:mm");
         } else {
-            return moment([currentMoment.year(), currentMoment.month(), currentMoment.day(), currentMoment.hour(), '30'])
+            return moment( currentMoment.year() + "-" + currentMoment.add(1, 'm').month() + "-" + currentMoment.date() +  " " + currentMoment.hour() + ":30", "YYYY-MM-DD HH:mm")
+            // return moment([currentMoment.year(), currentMoment.month(), currentMoment.day(), currentMoment.hour(), '30'], "YYYY-MM-DD HH:mm")
         }
     }
 }
@@ -98,6 +101,7 @@ export class MainPage extends React.Component {
 
         let date = this.state.date;
         let isClicked = this.state.clicked;
+        console.log(currentTime());
 
         return (
             <div>
