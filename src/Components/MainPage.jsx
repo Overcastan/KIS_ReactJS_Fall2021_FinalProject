@@ -101,7 +101,6 @@ export class MainPage extends React.Component {
 
         let date = this.state.date;
         let isClicked = this.state.clicked;
-        console.log(currentTime());
 
         return (
             <div>
@@ -115,7 +114,7 @@ export class MainPage extends React.Component {
                 <Form
                     name="basic"
                     labelCol={{
-                        span: 2,
+                        span: 7,
                     }}
                     wrapperCol={{
                         span: 4,
@@ -157,7 +156,7 @@ export class MainPage extends React.Component {
                         />
                     </Form.Item>
 
-                    <Form.Item wrapperCol={{offset: 2}}>
+                    <Form.Item wrapperCol={{offset: 7}}>
                         <Button type="primary" htmlType="submit" onClick={this.handleClick}>
                             Записаться
                         </Button>
