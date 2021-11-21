@@ -2,7 +2,7 @@ import React, {useState, useEffect} from "react";
 import {Typography} from "antd";
 import {Octokit} from "@octokit/core";
 
-const octokit = new Octokit({auth: `my_github_auth_token`});
+const octokit = new Octokit({auth: `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`});
 
 
 function useGithubData(username) {
@@ -14,15 +14,13 @@ function useGithubData(username) {
     });
 
     useEffect(() => {
-        new Promise(function (resolve) {
-            const response = octokit.request('GET /users/{username}', {
-                username: username
-            });
-            resolve(response);
+        octokit.request('GET /users/{username}', {
+            username: username
         }).then(function (result) {
             const my_data = result.data
             setData(my_data)
         })
+
     }, [username]);
 
     return data;
